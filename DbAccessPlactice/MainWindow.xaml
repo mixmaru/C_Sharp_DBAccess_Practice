@@ -6,7 +6,22 @@
         xmlns:local="clr-namespace:DbAccessPlactice"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
     <Grid>
-        
+        <ListBox ItemsSource="{Binding 社員viewModels}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding 社員番号}" />
+                        <TextBlock Text="{Binding 氏名}" />
+                        <TextBlock Text="{Binding 給与}" />
+                        <TextBlock Text="{Binding 入社日}" />
+                        <TextBlock Text="{Binding 部門番号}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
