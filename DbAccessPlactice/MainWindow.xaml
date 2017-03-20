@@ -10,18 +10,21 @@
         <local:MainWindowViewModel />
     </Window.DataContext>
     <Grid>
-        <ListBox ItemsSource="{Binding 社員viewModels}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding 社員番号}" />
-                        <TextBlock Text="{Binding 氏名}" />
-                        <TextBlock Text="{Binding 給与}" />
-                        <TextBlock Text="{Binding 入社日}" />
-                        <TextBlock Text="{Binding 部門番号}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <StackPanel>
+            <ListBox ItemsSource="{Binding 社員viewModels}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding 社員番号, TargetNullValue=''}" Width="20"/>
+                            <TextBox Text="{Binding 氏名}" Width="100" />
+                            <TextBox Text="{Binding 給与, TargetNullValue=''}" Width="70" />
+                            <TextBox Text="{Binding 入社日, TargetNullValue=''}" Width="150" />
+                            <TextBox Text="{Binding 部門番号}" Width="30" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Command="{Binding UpdateCommand}">更新</Button>
+        </StackPanel>
     </Grid>
 </Window>

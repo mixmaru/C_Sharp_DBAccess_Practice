@@ -876,6 +876,16 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("入社日", "入社日");
             tableMapping.ColumnMappings.Add("部門番号", "部門番号");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "dbo.社員UpdateCommand";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@社員番号", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "社員番号", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@氏名", global::System.Data.SqlDbType.NChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "氏名", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@給与", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "給与", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@入社日", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 10, 0, "入社日", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@部門番号", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, "部門番号", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -932,6 +942,86 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(社員DataSet.社員DataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(社員DataSet dataSet) {
+            return this.Adapter.Update(dataSet, "社員");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(global::System.Nullable<int> 社員番号, string 氏名, global::System.Nullable<int> 給与, global::System.Nullable<global::System.DateTime> 入社日, global::System.Nullable<int> 部門番号) {
+            if ((社員番号.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(社員番号.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((氏名 == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(氏名));
+            }
+            if ((給与.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(給与.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((入社日.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(入社日.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((部門番号.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(部門番号.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
     }
     
     /// <summary>
@@ -946,6 +1036,8 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
+        private 社員TableAdapter _社員TableAdapter;
+        
         private bool _backupDataSetBeforeUpdate;
         
         private global::System.Data.IDbConnection _connection;
@@ -958,6 +1050,20 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             }
             set {
                 this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public 社員TableAdapter 社員TableAdapter {
+            get {
+                return this._社員TableAdapter;
+            }
+            set {
+                this._社員TableAdapter = value;
             }
         }
         
@@ -980,6 +1086,10 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._社員TableAdapter != null) 
+                            && (this._社員TableAdapter.Connection != null))) {
+                    return this._社員TableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -993,6 +1103,9 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._社員TableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -1004,6 +1117,15 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(社員DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._社員TableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.社員.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._社員TableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -1014,6 +1136,14 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(社員DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._社員TableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.社員.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._社員TableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -1024,6 +1154,14 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(社員DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._社員TableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.社員.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._社員TableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             return result;
         }
         
@@ -1063,6 +1201,10 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
+            if (((this._社員TableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._社員TableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("TableAdapterManager で管理されるすべての TableAdapter は同一の接続文字列を使用する必要があります。");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager には接続情報がありません。それぞれの TableAdapterManager TableAdapter プロパティを有効な" +
@@ -1094,6 +1236,15 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._社員TableAdapter != null)) {
+                    revertConnections.Add(this._社員TableAdapter, this._社員TableAdapter.Connection);
+                    this._社員TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._社員TableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._社員TableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._社員TableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._社員TableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -1151,6 +1302,10 @@ namespace DbAccessPlactice.DB.社員DataSetTableAdapters {
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
+                }
+                if ((this._社員TableAdapter != null)) {
+                    this._社員TableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._社員TableAdapter]));
+                    this._社員TableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

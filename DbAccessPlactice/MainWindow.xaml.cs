@@ -32,12 +32,21 @@ namespace DbAccessPlactice
     public class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<社員ViewModel> 社員viewModels { get; set; }
+        public ICommand UpdateCommand { get; set; }
 
         private 社員Model 社員model = new 社員Model();
 
+        private int 指定部門番号 = 10;
+
         public MainWindowViewModel()
         {
-            this.社員viewModels = this.Crate社員ViewModelsBy部門番号(10);
+            this.reflesh社員viewModels();
+            this.UpdateCommand = this.CreateCommand(this.UpdateExecute, this.CanUpdateExecute);
+        }
+
+        private void reflesh社員viewModels()
+        {
+            this.社員viewModels = this.Crate社員ViewModelsBy部門番号(this.指定部門番号);
         }
 
         private ObservableCollection<社員ViewModel> Crate社員ViewModelsBy部門番号(int 部門番号)
@@ -57,14 +66,106 @@ namespace DbAccessPlactice
             }
             return retList;
         }
+
+        private void UpdateExecute(object paramater)
+        {
+            //入力文字列でデータを更新する
+            //更新用Listを作成する
+            var updateDataList = new List<社員更新用entity>();
+            foreach (var data in this.社員viewModels)
+            {
+                var obj = new 社員更新用entity()
+                {
+                    社員番号 = data.社員番号,
+                    氏名 = data.氏名,
+                    給与 = data.給与,
+                    入社日 = data.入社日,
+                    部門番号 = data.部門番号,
+                };
+                updateDataList.Add(obj);
+            }
+            //Modelへ更新を依頼する
+            this.社員model.Update(updateDataList);
+            //データ表示を更新する
+            this.reflesh社員viewModels();
+        }
+
+        private bool CanUpdateExecute(object paramater)
+        {
+            return true;
+        }
     }
 
     public class 社員ViewModel : ViewModelBase
     {
-        public int 社員番号 { get; set; }
-        public string 氏名 { get; set; }
-        public decimal? 給与 { get; set; }
-        public DateTime? 入社日 { get; set; }
-        public int 部門番号 { get; set; }
+        private int? _社員番号;
+        public int? 社員番号
+        {
+            get
+            {
+                return this._社員番号;
+            }
+            set
+            {
+                this._社員番号 = value;
+                this.RaisePropertyChanged("社員番号");
+            }
+        }
+
+        private string _氏名;
+        public string 氏名
+        {
+            get
+            {
+                return this._氏名;
+            }
+            set
+            {
+                this._氏名 = value;
+                this.RaisePropertyChanged("氏名");
+            }
+        }
+
+        private decimal? _給与;
+        public decimal? 給与
+        {
+            get
+            {
+                return this._給与;
+            }
+            set
+            {
+                this._給与 = value;
+                this.RaisePropertyChanged("給与");
+            }
+        }
+
+        private DateTime? _入社日;
+        public DateTime? 入社日
+        {
+            get
+            {
+                return this._入社日;
+            }
+            set
+            {
+                this._入社日 = value;
+                this.RaisePropertyChanged("入社日");
+            }
+        }
+
+        private int _部門番号;
+        public int 部門番号
+        {
+            get
+            {
+                return this._部門番号;
+            }
+            set
+            {
+                this._部門番号 = value;
+                this.RaisePropertyChanged("_部門番号");
+            }
+        }
     }
 }
