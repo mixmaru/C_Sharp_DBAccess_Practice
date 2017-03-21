@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DbAccessPlactice"
+        xmlns:model="clr-namespace:DbAccessPlactice.Model"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.DataContext>
@@ -20,6 +21,10 @@
                             <TextBox Text="{Binding 給与, TargetNullValue=''}" Width="70" />
                             <TextBox Text="{Binding 入社日, TargetNullValue=''}" Width="150" />
                             <TextBox Text="{Binding 部門番号}" Width="30" />
+                            <ComboBox ItemsSource="{Binding 性別List}"
+                                      DisplayMemberPath="name"
+                                      SelectedValuePath="ID"
+                                      SelectedValue="{Binding 性別ID}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

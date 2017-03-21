@@ -61,7 +61,10 @@ namespace DbAccessPlactice
                     社員番号 = data.社員番号,
                     給与 = data.給与,
                     部門番号 = data.部門番号,
+                    性別ID = 1,
                 };
+                //コンボボックス用プロパティのセット
+                obj.性別List = 性別Model.性別取得entityList;
                 retList.Add(obj);
             }
             return retList;
@@ -165,6 +168,43 @@ namespace DbAccessPlactice
             {
                 this._部門番号 = value;
                 this.RaisePropertyChanged("_部門番号");
+            }
+        }
+
+        private int _性別ID;
+        public int 性別ID
+        {
+            get { return this._性別ID; }
+            set
+            {
+                this._性別ID = value;
+                this.RaisePropertyChanged("性別ID");
+
+                //このタイミングでコンボボックスを変更してみる
+                var list = new List<性別取得Entity>();
+                list.Add(new 性別取得Entity()
+                {
+                    ID = 3,
+                    name = "お釜",
+                });
+                list.Add(new 性別取得Entity()
+                {
+                    ID = 4,
+                    name = "アナコンダ",
+                });
+                this.性別List = list;
+            }
+        }
+
+        private List<性別取得Entity> _性別List;
+        public List<性別取得Entity> 性別List
+        {
+            get { return this._性別List; }
+            set
+            {
+                this._性別List = value;
+
+                this.RaisePropertyChanged("性別List");
             }
         }
     }
