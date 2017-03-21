@@ -125,6 +125,11 @@ namespace DbAccessPlactice
             set
             {
                 this._氏名 = value;
+                //バリデーション。空はNGとする
+                if (this._氏名 == "")
+                {
+                    this.SetError("氏名", "空はNGです");
+                }
                 this.RaisePropertyChanged("氏名");
             }
         }

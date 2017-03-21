@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace DbAccessPlactice.Common
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged, IDataErrorInfo
+    public abstract class ViewModelBase : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         #region == implement of INotifyPropertyChanged ==
 
         // INotifyPropertyChanged.PropertyChanged の実装
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         // INotifyPropertyChanged.PropertyChangedイベントを発生させる。
         protected virtual void RaisePropertyChanged(string propertyName)
@@ -26,23 +28,21 @@ namespace DbAccessPlactice.Common
         // IDataErrorInfo用のエラーメッセージを保持する辞書
         private Dictionary<string, string> _ErrorMessages = new Dictionary<string, string>();
 
-        // IDataErrorInfo.Error の実装
-        string IDataErrorInfo.Error
-        {
-            get { return (_ErrorMessages.Count > 0) ? "Has Error" : null; }
-        }
-
-        // IDataErrorInfo.Item の実装
-        string IDataErrorInfo.this[string columnName]
+        public bool HasErrors
         {
             get
             {
-                if (_ErrorMessages.ContainsKey(columnName))
-                    return _ErrorMessages[columnName];
+                if (this._ErrorMessages.Count == 0)
+                {
+                    return false;
+                }
                 else
-                    return null;
+                {
+                    return true;
+                }
             }
         }
+
 
         // エラーメッセージのセット
         protected void SetError(string propertyName, string errorMessage)
@@ -106,6 +106,18 @@ namespace DbAccessPlactice.Common
         protected ICommand CreateCommand(Action<object> command, Func<object, bool> canExecute)
         {
             return new _DelegateCommand(command, canExecute);
+        }
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            if (string.IsNullOrEmpty(propertyName) || !this._ErrorMessages.ContainsKey(propertyName))
+            {
+                return null; 
+            }
+            else
+            {
+                return this._ErrorMessages[propertyName];
+            }
         }
 
         #endregion
