@@ -1,5 +1,6 @@
 ﻿using DbAccessPlactice.Common;
 using DbAccessPlactice.Model;
+using DbAccessPlactice.Model.社員Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

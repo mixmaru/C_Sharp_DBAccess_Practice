@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using DbAccessPlactice.DB;
 using DbAccessPlactice.DB.社員DataSetTableAdapters;
 
-namespace DbAccessPlactice.Model
+namespace DbAccessPlactice.Model.社員Model
 {
     class 社員Model
     {
