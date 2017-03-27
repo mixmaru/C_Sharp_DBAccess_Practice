@@ -1,0 +1,28 @@
+﻿<Window x:Class="Wpfエレメントをいろいろ試す.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfエレメントをいろいろ試す"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid x:Name="grid">
+        <Border BorderBrush="Silver" BorderThickness="5" HorizontalAlignment="Left" Margin="30,20,0,0" Name="border1" VerticalAlignment="Top">
+            <ListBox>
+                <Button x:Name="ボタン" >
+                    <Button x:Name="innerボタン" Click="innerボタン_Click" Content="aaaaa">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <TextBlock Text="{TemplateBinding Property=Content}" />
+                                <!--ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" /-->
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Button>
+                <Button x:Name="ボタン2" >
+                    <Button x:Name="innerボタン2" Content="いんなーボタン" />
+                </Button>
+            </ListBox>
+        </Border>
+    </Grid>
+</Window>
