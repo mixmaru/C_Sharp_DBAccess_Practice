@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "リソース練習", "リ�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "フォーカス移動練習", "フォーカス移動練習\フォーカス移動練習.csproj", "{11E90793-9749-4BFA-90D3-63991558A614}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "お試しフォルダ", "お試しフォルダ", "{DA9B40EA-0685-4AA3-8079-C5DEE2518B48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid練習", "DataGrid練習\DataGrid練習.csproj", "{F84AF36B-59AD-4396-8CDC-835FC0401EDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,8 +55,15 @@ Global
 		{11E90793-9749-4BFA-90D3-63991558A614}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E90793-9749-4BFA-90D3-63991558A614}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E90793-9749-4BFA-90D3-63991558A614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F84AF36B-59AD-4396-8CDC-835FC0401EDC} = {DA9B40EA-0685-4AA3-8079-C5DEE2518B48}
 	EndGlobalSection
 EndGlobal
