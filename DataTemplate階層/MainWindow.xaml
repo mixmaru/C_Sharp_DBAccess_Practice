@@ -3,32 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:io="clr-namespace:System.IO;assembly=mscorlib"
         xmlns:local="clr-namespace:DataTemplate階層"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        ScrollViewer.CanContentScroll="True"
+        >
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type io:DirectoryInfo}">
+            <StackPanel>
+                <TextBlock Text="{Binding Path=Name}" />
+                <ListBox>
+                    <ListBox.ItemsSource>
+                        <Binding>
+                            <Binding.Converter>
+                                <local:GetFileSystemInfosConverter />
+                            </Binding.Converter>
+                        </Binding>
+                    </ListBox.ItemsSource>
+                </ListBox>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Name}" />
-                        <ListBox Height="75">
-                            <ListBox.ItemsSource>
-                                <Binding Path=".">
-                                    <Binding.Converter>
-                                        <local:GetFileSystemInfosConverter />
-                                    </Binding.Converter>
-                                </Binding>
-                            </ListBox.ItemsSource>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=Name}" />
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ScrollViewer>
+            <ListBox ItemsSource="{Binding}" />
+        </ScrollViewer>
     </Grid>
 </Window>

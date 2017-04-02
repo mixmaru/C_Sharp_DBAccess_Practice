@@ -22,7 +22,7 @@ namespace DataTemplate階層 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            DataContext = new DirectoryInfo[] { new DirectoryInfo(@"c:\windows") };
+            DataContext = new DirectoryInfo[] { new DirectoryInfo(@"C:\Users\mix\Source") };
         }
     }
 
@@ -30,7 +30,8 @@ namespace DataTemplate階層 {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             try {
                 if (value is DirectoryInfo) {
-                    return ((DirectoryInfo)value).GetFileSystemInfos();
+                    var retval = ((DirectoryInfo)value).GetFileSystemInfos();
+                    return retval;
                 }
             } catch { }
             return null;
