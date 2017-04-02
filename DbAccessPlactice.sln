@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "お試しフォルダ", "�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGrid練習", "DataGrid練習\DataGrid練習.csproj", "{F84AF36B-59AD-4396-8CDC-835FC0401EDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBind練習", "DataBind練習\DataBind練習.csproj", "{4C4BE054-252C-4C60-8450-D22530B30ECF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84AF36B-59AD-4396-8CDC-835FC0401EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C4BE054-252C-4C60-8450-D22530B30ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C4BE054-252C-4C60-8450-D22530B30ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C4BE054-252C-4C60-8450-D22530B30ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C4BE054-252C-4C60-8450-D22530B30ECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
