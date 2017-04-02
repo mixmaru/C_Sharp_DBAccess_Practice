@@ -3,13 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sx="clr-namespace:System.Xml;assembly=System.Xml"
         xmlns:local="clr-namespace:DataBind練習"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{DynamicResource dataSource}"
+        >
+    <Window.Resources>
+        <XmlDataProvider x:Key="dataSource">
+            <x:XData>
+                <Media xmlns="">
+                    <Book Author="山田" Title="愛は天国" />
+                    <Book Author="鈴木" Title="愛は地獄" />
+                    <Book Author="佐藤" Title="愛は生きる糧" />
+                    <CD Author="佐藤" Title="愛子は歌う" />
+                    <DVD Director="山田" Title="愛という名の映画">
+                        <Actor>佐藤</Actor>
+                        <Actor>鈴木</Actor>
+                    </DVD>
+                </Media>
+            </x:XData>
+        </XmlDataProvider>
+        <DataTemplate x:Key="template" DataType="{x:Type sx:XmlElement}">
+            <TextBlock Text="{Binding XPath=@Title}" />
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <StackPanel>
             <TextBox x:Name="text1"></TextBox>
             <TextBox x:Name="text2" Text="{Binding ElementName=text1, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <ListBox ItemsSource="{Binding XPath=/Media/Book/@Title, Source={StaticResource dataSource}}" />
+            <ListBox ItemsSource="{Binding XPath=/Media/Book}" 
+                     ItemTemplate="{DynamicResource template}"
+                     />
         </StackPanel>
     </Grid>
 </Window>
