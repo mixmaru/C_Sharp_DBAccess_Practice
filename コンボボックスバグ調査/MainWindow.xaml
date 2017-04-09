@@ -1,0 +1,33 @@
+﻿<Window x:Class="コンボボックスバグ調査.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:コンボボックスバグ調査"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding PersonList}" VirtualizingStackPanel.IsVirtualizing="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Z戦士">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="技名">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Path=DataContext.技名List, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn Header="技名ComboboxCol" ItemsSource="{Binding Path=DataContext.技名List, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
