@@ -1,0 +1,19 @@
+﻿<Window x:Class="ユーザーコントロール練習.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ユーザーコントロール練習"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <local:Converter x:Key="Conv" />
+    </Window.Resources>
+    <StackPanel>
+        <!--
+        <local:数値のみ許可TextBlock x:Name="UesrCont" Value="{Binding Value, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" />
+        -->
+        <TextBox Text="{Binding Value, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Converter={StaticResource Conv}}" />
+        <Button Content="フォーカス外す" />
+    </StackPanel>
+</Window>
