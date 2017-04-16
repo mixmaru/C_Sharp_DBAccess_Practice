@@ -6,8 +6,18 @@
         xmlns:local="clr-namespace:カスタムコントロール"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <local:PART_NumericUpDown HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-
-    </Grid>
+    <StackPanel>
+        <local:NumericUpDown BorderBrush="Black" BorderThickness="2"/>
+        <local:NumericUpDown>
+            <local:NumericUpDown.Template>
+                <ControlTemplate TargetType="{x:Type local:NumericUpDown}">
+                    <StackPanel>
+                        <RepeatButton x:Name="PART_UpButton" Content="Up" />
+                        <TextBlock Text="{Binding Value, RelativeSource={RelativeSource AncestorType=local:NumericUpDown}}" HorizontalAlignment="Center" />
+                        <RepeatButton x:Name="PART_DownButton" Content="Down" />
+                    </StackPanel>
+                </ControlTemplate>
+            </local:NumericUpDown.Template>
+        </local:NumericUpDown>
+    </StackPanel>
 </Window>
